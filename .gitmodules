@@ -1,0 +1,27 @@
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "bundle/textile"]
+	path = bundle/textile
+	url = https://github.com/timcharper/textile.vim.git
+[submodule "bundle/vim-colors-solorized"]
+	path = bundle/vim-colors-solorized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/vim-commentary"]
+	path = bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "bundle/vim-dispatch"]
+	path = bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "bundle/vim-textobj-entire"]
+	path = bundle/vim-textobj-entire
+	url = https://github.com/kana/vim-textobj-entire.git
+[submodule "bundle/vim-textobj-user"]
+	path = bundle/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user.git
+[submodule "bundle/vim-translator"]
+	path = bundle/vim-translator
+	url = https://github.com/maksimr/vim-translator.git
