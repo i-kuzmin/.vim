@@ -25,3 +25,6 @@
 [submodule "bundle/vim-translator"]
 	path = bundle/vim-translator
 	url = https://github.com/maksimr/vim-translator.git
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git

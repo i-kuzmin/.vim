@@ -1,0 +1,32 @@
+
+= Plugin Description =
+
+tagbar:
+    Class browser from tag file
+
+textile:
+    ???
+
+vim-colors-solorized:
+     color scheme
+
+vim-commentary:
+
+vim-dispatch:
+     Async make
+vim-fugitive:
+     git plughin
+
+vim-textobj-entire:
+vim-textobj-user:
+
+vim-translator:
+     google-translate
+
+vim-unimpaired:
+     complementary pair mappings
+vis:
+    Ex commands over visually selected block.
+
+visEx:
+    Execute visual selected block
