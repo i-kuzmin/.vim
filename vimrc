@@ -1,5 +1,7 @@
 set nocompatible
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+
 " execute .vimrc in working directory
 set exrc hlsearch nohidden
 set textwidth=120 tabstop=4 shiftwidth=4 expandtab nowrap
