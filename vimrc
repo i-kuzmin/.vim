@@ -72,7 +72,7 @@ inoremap jk <esc>
 " inoremap <esc> <nop>
 
 "
-" normal mode mappings
+" Normal Mode Mappings --- {{{
 "
 nnoremap <silent> p :cprevious<CR>
 nnoremap <silent> n :cnext<CR>
@@ -86,6 +86,12 @@ nnoremap <silent> <leader>w :botright lwindow<CR>
 " add empty line above/belove current
 nnoremap <leader>O :set paste<CR>O<esc>:set nopaste<CR>
 nnoremap <leader>o :set paste<CR>o<esc>:set nopaste<CR>
+
+vnoremap <silent> <leader>y y:silent '<,'>w !xsel -ib<CR>
+nnoremap <silent> <leader>p :silent r !xsel -ob<CR>
+nnoremap <silent> <leader>P O<esc>:silent r !xsel -ob<CR>
+" }}} --- Normal Mode Mappings
+
 
 "
 " Plugins
@@ -111,6 +117,7 @@ vnoremap <leader>} v`>a}<esc>`<i{<esc>`>ll
 
 " highlight word under cursor
 nnoremap gh :exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))<cr>
+nnoremap gH :match<cr>
 
 " Windows managment
 
@@ -171,12 +178,12 @@ nmap <silent> 8 8gt
 nmap <silent> 9 9gt
 nmap <silent> 0 :tablast<CR>
 
-"nmap gh :find %:p:t:r.h<CR>
-"nmap gc :find %:p:t:r.cpp<CR>
-nmap ,s :find %:t:r.cpp<CR>
-nmap ,S :sf %:t:r.cpp<CR>
-nmap ,h :find %:t:r.h<CR>
-nmap ,H :sf %:t:r.h<CR>
+nmap ,s :find  %:t:r.cpp<CR>
+nmap ,S :sfind %:t:r.cpp<CR>
+nmap ,i :find  %:t:r.inl<CR>
+nmap ,I :sfind %:t:r.inl<CR>
+nmap ,h :find  %:t:r.h<CR>
+nmap ,H :sfind %:t:r.h<CR>
 
 
 nmap <leader>ew :e %%
