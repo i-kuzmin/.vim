@@ -5,6 +5,7 @@ execute pathogen#infect()
 " execute .vimrc in working directory
 set exrc hlsearch nohidden
 set textwidth=120 tabstop=4 shiftwidth=4 expandtab nowrap
+set grepprg=ack\ -k
 
 set fileencodings=ucs-bom,utf-8,default,cp1251,cp866,latin1
 
@@ -65,7 +66,7 @@ set listchars=tab:▸\ ,eol:¬
 "
 
 inoremap jj <esc>
-inoremap jk <esc>
+"inoremap jk <esc>
 
 
 " this will help forgot escape
@@ -77,6 +78,7 @@ inoremap jk <esc>
 nnoremap <silent> p :cprevious<CR>
 nnoremap <silent> n :cnext<CR>
 nnoremap <silent> w :botright cwindow<CR>
+nnoremap <silent> e :Explore<CR>
 
 
 nnoremap <silent> <leader>p :lprevious<CR>
@@ -191,7 +193,7 @@ nmap <leader>es :sp %%
 nmap <leader>ev :vsp %%
 nmap <leader>et :tabe %%
 nmap <leader>erc :sp $MYVIMRC<CR>
-nmap <leader>rrc :source $MYVIMRC<CR>
+nmap <leader>src :source $MYVIMRC<CR>
 
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
@@ -250,7 +252,7 @@ augroup filetype_tools
     autocmd!
     "autocmd FileType cpp :iabbrev <buffer> iff if ( ) {<cr><++><cr>}<C-o>%<C-o>F)<left>
     "autocmd FileType cpp :compiler clang |setlocal makeprg=~/.bin/build\ $*\ %:p:r.cpp
-    autocmd FileType sh :setlocal nu grepprg=grep\ -n\ -R\ --exclude=.tags\ '--exclude=*.sw[a-z]'
+    "autocmd FileType sh :setlocal nu grepprg=grep\ -n\ -R\ --exclude=.tags\ '--exclude=*.sw[a-z]'
     "autocmd FileType cpp :iabbrev '' ''<left>
     "autocmd FileType cpp :iabbrev "" ""<left>
     "autocmd FileType cpp :iabbrev /**/ /**/<left><left>
@@ -272,3 +274,5 @@ augroup filetype
     au! BufRead,BufNewFile *.td set filetype=tablegen
     au! BufRead,BufNewFile *Makefile* set filetype=make
 augroup END
+
+" vim : foldmethod=marker
