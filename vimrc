@@ -5,12 +5,13 @@ execute pathogen#infect()
 " execute .vimrc in working directory
 set exrc hlsearch nohidden
 set textwidth=120 tabstop=4 shiftwidth=4 expandtab nowrap
-set grepprg=ack\ -k
 
 set fileencodings=ucs-bom,utf-8,default,cp1251,cp866,latin1
 
 " use blowfish2 for encrypt files
-set cryptmethod=blowfish2
+if version >= 744
+    set cryptmethod=blowfish2
+endif
 
 if has('gui_running')
     set guioptions=ai
