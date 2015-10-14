@@ -6,6 +6,8 @@ execute pathogen#infect()
 set exrc hlsearch nohidden
 set textwidth=120 tabstop=4 shiftwidth=4 expandtab nowrap
 
+set pastetoggle=<f5>
+
 set fileencodings=ucs-bom,utf-8,default,cp1251,cp866,latin1
 
 " use blowfish2 for encrypt files
@@ -42,6 +44,32 @@ autocmd FileType cpp :CTAGS
 
 syntax enable
 colorscheme solarized
+
+" from sensible vim
+set backspace=indent,eol,start
+set complete-=i
+
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+
+set laststatus=2
+set ruler
+set showcmd
+set wildmenu
+
+if !&scrolloff
+  set scrolloff=1
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+set display+=lastline
+
+if v:version > 703 || v:version == 703 && has("patch541")
+      set formatoptions+=j " Delete comment character when joining commented lines
+  endif
 
 " Russian keymaps
 set keymap=russian-jcukenwin
