@@ -167,6 +167,11 @@ nnoremap <silent> <A-J> :wincmd J<CR>
 nnoremap <silent> <A-H> :wincmd H<CR>
 nnoremap <silent> <A-L> :wincmd L<CR>
 
+nnoremap <silent> <A-c> :wincmd c<CR>
+nnoremap <silent> <A-v> :wincmd v<CR>
+nnoremap <silent> <A-s> :wincmd s<CR>
+nnoremap <silent> <A-o> :wincmd o<CR>
+
 nnoremap <silent> c :wincmd c<CR>
 nnoremap <silent> v :wincmd v<CR>
 nnoremap <silent> s :wincmd s<CR>
