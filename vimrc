@@ -39,8 +39,14 @@ let g:solarized_hitrail=1
 " ctags
 let g:ctags_statusline=1
 let g:ctags_title=0
-"autocmd FileType cpp :CTAGS
 
+" airline
+let g:airline_powerline_fonts = 1
+"if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+"endif
+"let g:airline_symbols.space = "\ua0"
+let g:airline_theme="solarized"
 
 syntax enable
 colorscheme solarized
@@ -102,7 +108,6 @@ let $BASH_ENV = "~/.bash/vim-tools"
 "inoremap jj <esc>
 inoremap  <C-^>
 inoremap <C-c> <esc>
-"inoremap jk <esc>
 
 
 " this will help forgot escape
