@@ -39,7 +39,7 @@ let g:solarized_hitrail=1
 " ctags
 let g:ctags_statusline=1
 let g:ctags_title=0
-autocmd FileType cpp :CTAGS
+"autocmd FileType cpp :CTAGS
 
 
 syntax enable
@@ -91,10 +91,17 @@ set cursorline
 set listchars=tab:▸\ ,eol:¬
 
 "
+" interpreter config
+"
+let $BASH_ENV = "~/.bash/vim-tools"
+
+"
 " insert mode mappings (imap)
 "
 
-inoremap jj <esc>
+"inoremap jj <esc>
+inoremap  <C-^>
+inoremap <C-c> <esc>
 "inoremap jk <esc>
 
 
@@ -133,6 +140,38 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 
 nnoremap <silent> <F7> :set list!<CR>
+
+" airline plugin
+let g:airline_powerline_fonts=0
+
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+let g:airline_mode_map = {
+  \ '__' : '-',
+  \ 'n'  : 'N',
+  \ 'i'  : 'I',
+  \ 'R'  : 'R',
+  \ 'c'  : 'C',
+  \ 'v'  : 'V',
+  \ 'V'  : 'V',
+  \ '' : 'V',
+  \ 's'  : 'S',
+  \ 'S'  : 'S',
+  \ '' : 'S',
+  \ }
+
+" control which sections get truncated and at what width. >
+"
+let g:airline#extensions#branch#enabled = 0
+"let g:airline#extensions#default#section_truncate_width = { 'a' : 10 }
+" or only load what you want
+"   let g:airline_extensions = ['branch', 'tabline']
+
+let g:airline#extensions#default#layout = [
+      \ [ 'a', 'b', 'c' ],
+      \ [ 'x', 'z', 'warning' ]
+      \ ]
 
 "
 " visual mode mappings
@@ -303,6 +342,7 @@ augroup END
 "
 
 augroup filetype
+    au!
     au! BufRead,BufNewFile *.t2t set filetype=txt2tags
     au! BufRead,BufNewFile *.ll set filetype=llvm
     au! BufRead,BufNewFile *.td set filetype=tablegen
