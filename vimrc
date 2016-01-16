@@ -1,3 +1,4 @@
+
 set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
@@ -127,8 +128,10 @@ nnoremap <silent> <leader>n :lnext<CR>
 nnoremap <silent> <leader>w :botright lwindow<CR>
 
 " add empty line above/belove current
-nnoremap <leader>O :set paste<CR>O<esc>:set nopaste<CR>
-nnoremap <leader>o :set paste<CR>o<esc>:set nopaste<CR>
+nnoremap <leader>O  :call helpers#InsertEmptyLine(1)<CR>
+nnoremap <leader>o  :call helpers#InsertEmptyLine(2)<CR>
+nnoremap <leader>go :call helpers#InsertEmptyLine(3)<CR>
+"nnoremap <leader><C-o> :call helpers#InsertEmptyLine(3)<CR>
 
 vnoremap <silent> <leader>y y:silent '<,'>w !xsel -ib<CR>
 nnoremap <silent> <leader>p :silent r !xsel -ob<CR>
