@@ -321,6 +321,10 @@ endf
 
 nnoremap <leader>ww :call ExploreWiki()<CR>
 
+" key bindings
+nnoremap <leader>m :w<CR>:make all<CR>
+nnoremap <leader>M :w<CR>:Make all<CR>
+
 call togglebg#map("<F5>")
 map <F2> :set spell!<CR>
 
