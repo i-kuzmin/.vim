@@ -110,7 +110,6 @@ function! SetNumber(mode)
         setlocal norelativenumber
     endif
 endfunction
-
 augroup line_numbers
     autocmd!
     autocmd! FocusLost *   :call SetNumber("absolute")
@@ -122,6 +121,25 @@ augroup line_numbers
     autocmd! WinEnter *    :call SetNumber("relative")
 augroup END
 " }}} --- line numbers
+
+" Active window width --- {{{
+function! SetupMinWindowSize()
+    if &colorcolumn > 0
+        let l:width = &colorcolumn - 1
+    elseif &textwidth > 0
+        let l:width = &textwidth
+    else
+        let l:width = 80
+    endif
+    let l:required = &numberwidth + l:width
+    let &winwidth = l:required
+    let &winheight = 10
+endfunction
+augroup window_size
+    autocmd!
+    autocmd! FileType *  :call SetupMinWindowSize()
+augroup END
+" }}} --  active window width
 
 "
 " interpreter config
