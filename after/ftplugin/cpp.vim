@@ -2,7 +2,7 @@
 "compiler clang|setlocal makeprg=vim_cpp_build\ $*\ %:p:r.cpp
 compiler clang|setlocal makeprg=~/.bash/vim-tools\ cpp_build\ $*\ %:p:r.cpp
 "setlocal foldmethod=syntax foldlevel=20
-setlocal nu grepprg=grep\ -n\ -R\ --exclude=.tags\ '--exclude=*.sw[a-z]'
+setlocal nu rnu grepprg=grep\ -n\ -R\ --exclude=.tags\ '--exclude=*.sw[a-z]'
 set colorcolumn=86
 "set grepprg=ack\ -k\ --cpp
 

@@ -11,6 +11,8 @@ set pastetoggle=<f5>
 
 set fileencodings=ucs-bom,utf-8,default,cp1251,cp866,latin1
 
+set ttyfast
+
 " use blowfish2 for encrypt files
 if version >= 744
     set cryptmethod=blowfish2
@@ -33,7 +35,7 @@ let g:tex_flavor = "latex"
 " google translate
 let g:goog_user_conf = { 'langpair': 'en|ru', 'cmd': 'node', 'v_key': 'T' }
 
-" solorized color scheme
+" solarized color scheme
 let g:solarized_hitrail=1
 "let g:solarized_visibility="low"
 
@@ -96,6 +98,30 @@ set clipboard=unnamed
 set cursorline
 
 set listchars=tab:▸\ ,eol:¬
+
+" Line numbers --- {{{
+function! SetNumber(mode)
+    if &number ==# "nonumber"
+        return
+    endif
+    if a:mode ==# "relative"
+        setlocal relativenumber
+    elseif a:mode ==# "absolute"
+        setlocal norelativenumber
+    endif
+endfunction
+
+augroup line_numbers
+    autocmd!
+    autocmd! FocusLost *   :call SetNumber("absolute")
+    autocmd! InsertEnter * :call SetNumber("absolute")
+    autocmd! WinLeave *    :call SetNumber("absolute")
+
+    autocmd! FocusGained * :call SetNumber("relative")
+    autocmd! InsertLeave * :call SetNumber("relative")
+    autocmd! WinEnter *    :call SetNumber("relative")
+augroup END
+" }}} --- line numbers
 
 "
 " interpreter config
