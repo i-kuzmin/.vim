@@ -43,3 +43,6 @@
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "bundle/vim-rsi"]
+	path = bundle/vim-rsi
+	url = git://github.com/tpope/vim-rsi.git
