@@ -46,3 +46,6 @@
 [submodule "bundle/vim-rsi"]
 	path = bundle/vim-rsi
 	url = git://github.com/tpope/vim-rsi.git
+[submodule "bundle/vim-abolish"]
+	path = bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git
