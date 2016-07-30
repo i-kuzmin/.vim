@@ -86,7 +86,7 @@ set iminsert=0
 set imsearch=0
 
 "spell
-set spell spelllang=ru_yo,en_us
+set spell spelllang=en_us,ru_yo
 
 set tags+=.tags
 filetype plugin on
@@ -131,14 +131,17 @@ function! SetupMinWindowSize()
     else
         let l:width = 80
     endif
-    let l:required = &numberwidth + l:width
+    let l:required = l:width
+    if &number ==# "number" || &relativenumber ==# "relativenumber"
+        let l:required += &numberwidth
+    endif
     let &winwidth = l:required
     let &winheight = 10
 endfunction
-augroup window_size
-    autocmd!
-    autocmd! FileType *  :call SetupMinWindowSize()
-augroup END
+"augroup window_size
+"    autocmd!
+"    autocmd! FileType *  :call SetupMinWindowSize()
+"augroup END
 " }}} --  active window width
 
 "
@@ -366,8 +369,11 @@ endf
 nnoremap <leader>ww :call ExploreWiki()<CR>
 
 " key bindings
-nnoremap <leader>m :w<CR>:make all<CR>
-nnoremap <leader>M :w<CR>:Make all<CR>
+nnoremap <leader>m :up<CR>:make<CR>
+nnoremap <leader>M :up<CR>:Make<CR>
+
+nnoremap <leader>gp a <C-R>"<ESC>
+nnoremap <leader>gP i <C-R>"<ESC>
 
 call togglebg#map("<F5>")
 map <F2> :set spell!<CR>

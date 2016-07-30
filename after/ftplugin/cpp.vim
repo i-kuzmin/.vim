@@ -1,13 +1,14 @@
 "compiler clang |setlocal makeprg=~/.bin/build\ $*\ %:p:r.cpp
 "compiler clang|setlocal makeprg=vim_cpp_build\ $*\ %:p:r.cpp
-compiler clang|setlocal makeprg=~/.bash/vim-tools\ cpp_build\ $*\ %:p:r.cpp
+"compiler clang|setlocal makeprg=~/.bash/vim-tools\ cpp_build\ $*\ %:p:r.cpp
+compiler clang|setlocal makeprg=tbmake\ -sj15\ RECURSIVE=NO
 "setlocal foldmethod=syntax foldlevel=20
 setlocal nu rnu grepprg=grep\ -n\ -R\ --exclude=.tags\ '--exclude=*.sw[a-z]'
 set colorcolumn=86
 "set grepprg=ack\ -k\ --cpp
 
 " Ack plugin
-let g:ack_default_options .= " --cpp"
+let g:ack_default_options = "-s -H --nocolor --nogroup --column --cpp"
 
 " Clang tools
 map <leader>f :pyf ~/src/clang-llvm/llvm/tools/clang/tools/clang-format/clang-format.py<cr>
@@ -43,7 +44,9 @@ augroup vim_cpp
 augroup END
 
 call omni#cpp#complete#Init()
+call SetupMinWindowSize()
 
+set imsearch=0 iminsert=0
 " key bindings
 "nnoremap <leader>m :wa<CR>:make all<CR>
 "nnoremap <leader>M :wa<CR>:Make all<CR>
@@ -55,5 +58,4 @@ call omni#cpp#complete#Init()
 "function! GetTBFold(lnum)
 "    return '0'
 "endfunction
-
 " vim: ft=vim nu
