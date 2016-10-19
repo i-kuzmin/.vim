@@ -1,0 +1,24 @@
+<+	+>	!comp!	!exe!
+%        File: !comp!expand("%:p:t")!comp!
+%     Created: !comp!strftime("%a %b %d %I:00 %p %Y ").substitute(strftime('%Z'), '\<\(\w\)\(\w*\)\>\(\W\|$\)', '\1', 'g')!comp!
+% Last Change: !comp!strftime("%a %b %d %I:00 %p %Y ").substitute(strftime('%Z'), '\<\(\w\)\(\w*\)\>\(\W\|$\)', '\1', 'g')!comp!
+%
+\documentclass[a4paper]{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[a4paper,left=2.5cm,right=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\usepackage{indentfirst} % отделять первую строку раздела абзацным отступом
+\setlength\parindent{5ex}
+
+\righthyphenmin=2 % расстановка переносов соответствующая русскоязычным правилам
+
+% Useful packages
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{multicol}
+
+\begin{document}
+<++>
+\end{document}
