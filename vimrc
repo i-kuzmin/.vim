@@ -1,13 +1,12 @@
-
 set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
-
+"
 " execute .vimrc in working directory
 set exrc hlsearch nohidden
 set textwidth=120 tabstop=4 shiftwidth=4 expandtab nowrap
 
-set pastetoggle=<f5>
+set pastetoggle=<f4>
 
 set fileencodings=ucs-bom,utf-8,default,cp1251,cp866,latin1
 
@@ -77,8 +76,8 @@ endif
 set display+=lastline
 
 if v:version > 703 || v:version == 703 && has("patch541")
-      set formatoptions+=j " Delete comment character when joining commented lines
-  endif
+    set formatoptions+=j " Delete comment character when joining commented lines
+endif
 
 " Russian keymaps
 set keymap=russian-jcukenwin
@@ -155,6 +154,7 @@ let $BASH_ENV = "~/.bash/vim-tools"
 
 "inoremap jj <esc>
 inoremap  <C-^>
+cnoremap  <C-^>
 inoremap <C-c> <esc>
 
 
