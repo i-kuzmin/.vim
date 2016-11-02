@@ -1,9 +1,6 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
-[submodule "bundle/textile"]
-	path = bundle/textile
-	url = https://github.com/timcharper/textile.vim.git
 [submodule "bundle/vim-colors-solorized"]
 	path = bundle/vim-colors-solorized
 	url = https://github.com/altercation/vim-colors-solarized.git
