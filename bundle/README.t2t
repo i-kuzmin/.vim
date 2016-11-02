@@ -4,9 +4,6 @@
 tagbar:
     Class browser from tag file
 
-textile:
-    ???
-
 vim-colors-solorized:
      color scheme
 
@@ -14,11 +11,12 @@ vim-commentary:
 
 vim-dispatch:
      Async make
-vim-fugitive:
-     git plughin
 
-vim-textobj-entire:
-vim-textobj-user:
+vim-fugitive:
+     git plugin
+
+vim-textobj-entire and vim-textobj-user:
+    helper plugins
 
 vim-translator:
      google-translate
@@ -30,3 +28,6 @@ vis:
 
 visEx:
     Execute visual selected block
+
+vim-ctrlp:
+    Fuzzy finder plugin
