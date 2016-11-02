@@ -34,9 +34,23 @@ let g:tex_flavor = "latex"
 " google translate
 let g:goog_user_conf = { 'langpair': 'en|ru', 'cmd': 'node', 'v_key': 'T' }
 
-" solarized color scheme
+" Solarized color scheme --- {{{
 let g:solarized_hitrail=1
 "let g:solarized_visibility="low"
+" Enable italic for screen terminal --- {{{
+if $TERM_PROGRAM == ""
+    let s:solarized_terms_italic=[
+         \"screen.urxvt-256color",
+         \"rxvt-unicode-256color"
+          \]
+    for term in s:solarized_terms_italic
+        if $TERM =~ term
+            let $TERM_PROGRAM = "rxvt"
+        endif
+    endfor
+endif
+"     }}} --- enable italic for screen terminal
+" }}} --- solorized color scheme
 
 " ctags
 let g:ctags_statusline=1
@@ -48,10 +62,16 @@ let g:airline_powerline_fonts = 1
 "    let g:airline_symbols = {}
 "endif
 "let g:airline_symbols.space = "\ua0"
-let g:airline_theme="solarized"
+
+
+let g:airline_theme = "solarized"
 
 syntax enable
 colorscheme solarized
+" Adjust color scheme --- {{{
+hi! Folded ctermbg=NONE cterm=bold
+" }}} --- adjust color scheme
+
 
 " from sensible vim
 set backspace=indent,eol,start
@@ -411,4 +431,4 @@ augroup filetype
     au! BufRead,BufNewFile *Makefile* set filetype=make
 augroup END
 
-" vim : foldmethod=marker
+" vim: fdm=marker
