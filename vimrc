@@ -5,6 +5,7 @@ execute pathogen#infect()
 " execute .vimrc in working directory
 set exrc hlsearch nohidden
 set textwidth=120 tabstop=4 shiftwidth=4 expandtab nowrap
+set splitright splitbelow
 
 set pastetoggle=<f4>
 
