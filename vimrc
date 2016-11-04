@@ -36,43 +36,51 @@ let g:tex_flavor = "latex"
 let g:goog_user_conf = { 'langpair': 'en|ru', 'cmd': 'node', 'v_key': 'T' }
 
 " Solarized color scheme --- {{{
-let g:solarized_hitrail=1
-"let g:solarized_visibility="low"
-" Enable italic for screen terminal --- {{{
-if $TERM_PROGRAM == ""
-    let s:solarized_terms_italic=[
-         \"screen.urxvt-256color",
-         \"rxvt-unicode-256color"
-          \]
-    for term in s:solarized_terms_italic
-        if $TERM =~ term
-            let $TERM_PROGRAM = "rxvt"
-        endif
-    endfor
-endif
-"     }}} --- enable italic for screen terminal
+  let g:solarized_hitrail=1
+  "let g:solarized_visibility="low"
+  " Enable italic for screen terminal --- {{{
+    if $TERM_PROGRAM == ""
+        let s:solarized_terms_italic=[
+             \"screen.urxvt-256color",
+             \"rxvt-unicode-256color"
+              \]
+        for term in s:solarized_terms_italic
+            if $TERM =~ term
+                let $TERM_PROGRAM = "rxvt"
+            endif
+        endfor
+    endif
+  "   }}} --- enable italic for screen terminal
 " }}} --- solorized color scheme
 
-" ctags
-let g:ctags_statusline=1
-let g:ctags_title=0
+" ctags --- {{{
+  let g:ctags_statusline=1
+  let g:ctags_title=0
+" }}} --- ctags
 
-" airline
-let g:airline_powerline_fonts = 1
-"if !exists('g:airline_symbols')
-"    let g:airline_symbols = {}
-"endif
-"let g:airline_symbols.space = "\ua0"
+" airline -- {{{
+    let g:airline_powerline_fonts = 1
+    "if !exists('g:airline_symbols')
+    "    let g:airline_symbols = {}
+    "endif
+    "let g:airline_symbols.space = "\ua0"
+    let g:airline_theme = "solarized"
+" }}} --- airline
 
-
-let g:airline_theme = "solarized"
+" ctrlp --- {{{
+  let g:ctrlp_switch_buffer = 'Et'
+  let g:ctrlp_working_path_mode = 'wr'
+  let g:ctrlp_root_markers = ['Makefile']
+  let g:ctrlp_max_depth = 100
+  let g:ctrlp_max_files = 100000
+  let g:ctrlp_open_multiple_files = '2vjr'
+" }}} --- ctrlp
 
 syntax enable
 colorscheme solarized
 " Adjust color scheme --- {{{
-hi! Folded ctermbg=NONE cterm=bold
+  hi! Folded ctermbg=NONE cterm=bold
 " }}} --- adjust color scheme
-
 
 " from sensible vim
 set backspace=indent,eol,start
