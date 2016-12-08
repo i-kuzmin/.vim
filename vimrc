@@ -35,7 +35,7 @@ let g:tex_flavor = "latex"
 " google translate
 let g:goog_user_conf = { 'langpair': 'en|ru', 'cmd': 'node', 'v_key': 'T' }
 
-" Solarized color scheme --- {{{
+" --- Solarized color scheme --- {{{
   let g:solarized_hitrail=1
   "let g:solarized_visibility="low"
   " Enable italic for screen terminal --- {{{
@@ -53,12 +53,12 @@ let g:goog_user_conf = { 'langpair': 'en|ru', 'cmd': 'node', 'v_key': 'T' }
   "   }}} --- enable italic for screen terminal
 " }}} --- solorized color scheme
 
-" ctags --- {{{
+" --- ctags --- {{{
   let g:ctags_statusline=1
   let g:ctags_title=0
 " }}} --- ctags
 
-" airline -- {{{
+" --- airline --- {{{
     let g:airline_powerline_fonts = 1
     "if !exists('g:airline_symbols')
     "    let g:airline_symbols = {}
@@ -67,7 +67,7 @@ let g:goog_user_conf = { 'langpair': 'en|ru', 'cmd': 'node', 'v_key': 'T' }
     let g:airline_theme = "solarized"
 " }}} --- airline
 
-" ctrlp --- {{{
+" --- ctrlp --- {{{
   let g:ctrlp_switch_buffer = 'Et'
   let g:ctrlp_working_path_mode = 'wr'
   let g:ctrlp_root_markers = ['Makefile']
@@ -76,9 +76,20 @@ let g:goog_user_conf = { 'langpair': 'en|ru', 'cmd': 'node', 'v_key': 'T' }
   let g:ctrlp_open_multiple_files = '2vjr'
 " }}} --- ctrlp
 
+" --- syntastic --- {{{
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+" }}} --- syntastic
+
 syntax enable
 colorscheme solarized
-" Adjust color scheme --- {{{
+" --- Adjust color scheme --- {{{
   hi! Folded ctermbg=NONE cterm=bold
 " }}} --- adjust color scheme
 
