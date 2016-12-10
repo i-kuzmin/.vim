@@ -32,9 +32,6 @@ endif
 " latex-suit
 let g:tex_flavor = "latex"
 
-" google translate
-let g:goog_user_conf = { 'langpair': 'en|ru', 'cmd': 'node', 'v_key': 'T' }
-
 " --- Solarized color scheme --- {{{
   let g:solarized_hitrail=1
   "let g:solarized_visibility="low"
@@ -91,6 +88,7 @@ let g:goog_user_conf = { 'langpair': 'en|ru', 'cmd': 'node', 'v_key': 'T' }
 "  let g:syntastic_enable_highlighting = 1
 "  let g:syntastic_mode_map = { "mode" : "passive" }
 " }}} --- syntastic
+
 
 syntax enable
 colorscheme solarized
