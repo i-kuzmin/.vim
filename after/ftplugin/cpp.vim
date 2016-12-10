@@ -1,7 +1,8 @@
 "compiler clang |setlocal makeprg=~/.bin/build\ $*\ %:p:r.cpp
 "compiler clang|setlocal makeprg=vim_cpp_build\ $*\ %:p:r.cpp
+compiler clang "|setlocal makeprg=vim_cpp_build\ all
 "compiler clang|setlocal makeprg=~/.bash/vim-tools\ cpp_build\ $*\ %:p:r.cpp
-compiler clang|setlocal makeprg=tbmake\ -sj15\ RECURSIVE=NO
+"compiler clang|setlocal makeprg=tbmake\ RECURSIVE=NO
 "setlocal foldmethod=syntax foldlevel=20
 setlocal nu rnu grepprg=grep\ -n\ -R\ --exclude=.tags\ '--exclude=*.sw[a-z]'
 set colorcolumn=86
@@ -18,7 +19,7 @@ iabbrev <buffer> iff if ( ) {<cr><++><cr>}<C-o>%<C-o>F)<left>
 iabbrev <buffer> ife if ( ) {<cr><++><cr>} else {<cr><++><cr>}<C-o>%<C-o>F}<C-o>%<C-o>F)<left>
 iabbrev ii include
 
-set tags +=,~/.tags/cpp.tags
+set tags+=$HOME/.tags/cpp
 
 " :CTAGS
 
