@@ -31,3 +31,6 @@ visEx:
 
 vim-ctrlp:
     Fuzzy finder plugin
+
+vir-rsi:
+    readline keybindings in Insert and Command mode
