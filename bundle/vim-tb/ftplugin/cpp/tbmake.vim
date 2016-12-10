@@ -4,10 +4,10 @@ endif
 
 let b:loaded_tbmake = 1
 
-echom "cpp::tbmake load..."
 compiler clang
 
 call tb#init()
+noremap <unique> <buffer> <silent> <leader>tc :TBSwMakeprg<CR>
 " map tb:switch_makeprg
 
 "let b:undo_ftplugin=
