@@ -3,6 +3,9 @@ if exists("b:loaded_tb")
     finish
 endif
 let b:loaded_tb = 1
+
+set shellpipe+=\ 
+
 " }}} --- init plugin
 
 function tb#init() " --- {{{

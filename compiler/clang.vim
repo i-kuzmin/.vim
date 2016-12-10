@@ -3,23 +3,37 @@
 " Last Change:  2016 Dec 16
 
 " --- Init compiler {{{
-
-  if exists("clang")
+  if exists('current_compiler')
     finish
   endif
-  let clnag = 1
-  let current_compiler = "clang"
+  let current_compiler = 'clang'
+
+  if exists(':CompilerSet') != 2
+    command -nargs=* CompilerSet setlocal <args>
+  endif
 
 " }}} --- init 
 
 " --- Error Format --- {{{
-
   let s:cpo_save = &cpo
   set cpo-=C "Do not concatenate sourced lines that start with a backslash
 
-  setlocal errorformat  =%f:%l:%c:\ %trror:\ %m
-  setlocal errorformat +=%f:%l:%c:\ %tarning:\ %m
-  setlocal errorformat +=%-G%.%#
+  "CompilerSet errorformat=
+  "    \%f:%l:%c:\ %trror:\ %m,
+  "    \%f:%l:%c:\ %tarning:\ %m,
+  "    \%-G%.%#
+
+  CompilerSet errorformat=
+      \%-G---%.%#,
+      \%-G#%.%#,
+      \%E\%f:%l:%c:\ %trror:\ %m,
+      \%W\%f:%l:%c:\ %tarning:\ %m,
+      \%C%.%#,
+      \%Z%%s^
+
+  "setlocal errorformat  =%f:%l:%c:\ %trror:\ %m
+  "setlocal errorformat +=%f:%l:%c:\ %tarning:\ %m
+  "setlocal errorformat +=%-G%.%#
 
   let &cpo = s:cpo_save
   unlet s:cpo_save
