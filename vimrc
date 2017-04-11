@@ -8,6 +8,7 @@ set textwidth=120 tabstop=4 shiftwidth=4 expandtab nowrap
 set splitright splitbelow
 
 set pastetoggle=<f4>
+set undofile
 
 set fileencodings=ucs-bom,utf-8,default,cp1251,cp866,latin1
 
@@ -207,6 +208,8 @@ cnoremap  <C-^>
 "
 " Normal Mode Mappings --- {{{
 "
+nnoremap <space> a <esc>
+
 nnoremap <silent> p :cprevious<CR>
 nnoremap <silent> n :cnext<CR>
 nnoremap <silent> w :botright cwindow<CR>
@@ -227,6 +230,12 @@ vnoremap <silent> <leader>y y:silent '<,'>w !xsel -ib<CR>
 nnoremap <silent> <leader>p :silent r !xsel -ob<CR>
 nnoremap <silent> <leader>P O<esc>:silent r !xsel -ob<CR>
 " }}} --- Normal Mode Mappings
+
+"
+" Visual Mode Mappings --- {{{
+"
+vnoremap <leader>/ <esc>/\%>'<\%<'>
+" }}} --- visual mode mappings
 
 
 "
