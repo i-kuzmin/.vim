@@ -8,6 +8,7 @@ set textwidth=120 tabstop=4 shiftwidth=4 expandtab nowrap
 set splitright splitbelow
 
 set pastetoggle=<f4>
+set undofile
 
 set fileencodings=ucs-bom,utf-8,default,cp1251,cp866,latin1
 set ttyfast
@@ -245,24 +246,10 @@ endfunction
 "augroup END
 " }}} --  active window width
 
-"
-" insert mode mappings (imap)
-"
-" Stop entering Ex mode accidentally
-nnoremap Q <esc>
-
-inoremap jk <esc>
-inoremap  <C-^>
-cnoremap  <C-^>
-"inoremap <C-c> <esc>
-
-
-" this will help forgot escape
-" inoremap <esc> <nop>
-
-"
 " Mappings --- {{{
 "
+nnoremap <space> a <esc>
+
 nnoremap <silent> p :cprevious<CR>
 nnoremap <silent> n :cnext<CR>
 nnoremap <silent> w :botright cwindow<CR>
@@ -282,6 +269,8 @@ nnoremap <leader>go :call helpers#InsertEmptyLine(3)<CR>
 vnoremap <silent> <leader>y y:silent '<,'>w !xsel -ib<CR>
 nnoremap <silent> <leader>p :silent r !xsel -ob<CR>
 nnoremap <silent> <leader>P O<esc>:silent r !xsel -ob<CR>
+
+vnoremap <leader>/ <esc>/\%>'<\%<'>
 
 " make
 nnoremap <leader>m :up<CR>:make<CR>
@@ -303,6 +292,19 @@ nmap <leader>ev :vsp %%
 nmap <leader>et :tabe %%
 nmap <leader>erc :sp $MYVIMRC<CR>
 nmap <leader>src :source $MYVIMRC<CR>
+
+" Stop entering Ex mode accidentally
+nnoremap Q <esc>
+
+inoremap jk <esc>
+inoremap  <C-^>
+cnoremap  <C-^>
+
+"inoremap <C-c> <esc>
+
+
+" this will help forgot escape
+" inoremap <esc> <nop>
 
 " }}} --- Mappings
 

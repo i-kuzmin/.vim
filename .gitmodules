@@ -46,3 +46,9 @@
 [submodule "bundle/you-complete-me"]
 	path = bundle/you-complete-me
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "bundle/vim-rust"]
+	path = bundle/vim-rust
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule "bundle/omnicppcomplete"]
+	path = bundle/omnicppcomplete
+	url = https://github.com/vim-scripts/OmniCppComplete.git
