@@ -1,7 +1,7 @@
 set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
-"
+
 " execute .vimrc in working directory
 set exrc hlsearch nohidden
 set textwidth=120 tabstop=4 shiftwidth=4 expandtab nowrap
@@ -10,7 +10,6 @@ set splitright splitbelow
 set pastetoggle=<f4>
 
 set fileencodings=ucs-bom,utf-8,default,cp1251,cp866,latin1
-
 set ttyfast
 
 " use blowfish2 for encrypt files
@@ -56,12 +55,55 @@ let g:tex_flavor = "latex"
 " }}} --- ctags
 
 " --- airline --- {{{
-    let g:airline_powerline_fonts = 1
-    "if !exists('g:airline_symbols')
-    "    let g:airline_symbols = {}
-    "endif
+  let g:airline_theme = "solarized"
+    "let g:airline#extensions#tabline#enabled = 1
+  let g:airline_powerline_fonts=1
+
+  " --- symbols --- {{{
+    let g:airline_left_sep = ''
+    let g:airline_right_sep = ''
+
+    if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+    endif
+    let g:airline_symbols.notexists = '∄'
+    let g:airline_symbols.paste = 'ρ'
     "let g:airline_symbols.space = "\ua0"
-    let g:airline_theme = "solarized"
+  " --- }}} --- symbols
+
+  let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+
+  let g:airline#extensions#branch#enabled = 0
+  "let g:airline#extensions#default#section_truncate_width = { 'a' : 10 }
+  " or only load what you want
+  "let g:airline_extensions = ['branch', 'tabline']
+
+  let g:airline#extensions#default#layout =
+        \ [
+        \   [ 'a', 'b', 'c' ],
+        \   [ 'x', 'z', 'warning', 'error' ]
+        \ ]
+
+  let g:airline#extensions#tabline#show_splits = 1
+  let g:airline#extensions#tabline#enabled = 0
+  let g:airline#extensions#tabline#tabs_label = 't'
+  let g:airline#extensions#tabline#show_close_button = 0
+
+  " display full hirarchy of a tag
+  let g:airline#extensions#tagbar#flags = 'f'
+
 " }}} --- airline
 
 " --- ctrlp --- {{{
@@ -89,6 +131,23 @@ let g:tex_flavor = "latex"
 "  let g:syntastic_mode_map = { "mode" : "passive" }
 " }}} --- syntastic
 
+" --- tagbar {{{
+
+  nnoremap <silent> <F8> :TagbarToggle<CR>
+  let g:tagbar_autofocus=1
+
+"  }}} --- tagbar
+
+" --- UltiSnips --- {{{
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" }}} --- ultisnips
 
 syntax enable
 colorscheme solarized
@@ -136,7 +195,7 @@ filetype indent on
 
 nohlsearch
 set incsearch
-set clipboard=unnamed
+set clipboard=unnamedplus
 set cursorline
 
 set listchars=tab:▸\ ,eol:¬
@@ -187,15 +246,12 @@ endfunction
 " }}} --  active window width
 
 "
-" interpreter config
-"
-let $BASH_ENV = "~/.bash/vim-tools"
-
-"
 " insert mode mappings (imap)
 "
+" Stop entering Ex mode accidentally
+nnoremap Q <esc>
 
-"inoremap jj <esc>
+inoremap jk <esc>
 inoremap  <C-^>
 cnoremap  <C-^>
 "inoremap <C-c> <esc>
@@ -205,7 +261,7 @@ cnoremap  <C-^>
 " inoremap <esc> <nop>
 
 "
-" Normal Mode Mappings --- {{{
+" Mappings --- {{{
 "
 nnoremap <silent> p :cprevious<CR>
 nnoremap <silent> n :cnext<CR>
@@ -226,68 +282,31 @@ nnoremap <leader>go :call helpers#InsertEmptyLine(3)<CR>
 vnoremap <silent> <leader>y y:silent '<,'>w !xsel -ib<CR>
 nnoremap <silent> <leader>p :silent r !xsel -ob<CR>
 nnoremap <silent> <leader>P O<esc>:silent r !xsel -ob<CR>
-" }}} --- Normal Mode Mappings
 
+" make
+nnoremap <leader>m :up<CR>:make<CR>
+nnoremap <leader>M :up<CR>:Make<CR>
 
-"
-" Plugins
-"
-
-"   tagbar
-nnoremap <silent> <F8> :TagbarToggle<CR>
-let g:tagbar_autofocus=1
+" clipboard
+nnoremap <leader>gp a <C-R>"<ESC>
+nnoremap <leader>gP i <C-R>"<ESC>
 
 nnoremap <silent> <F7> :set list!<CR>
-
-" airline plugin
-let g:airline_powerline_fonts=0
-
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
-let g:airline_mode_map = {
-  \ '__' : '-',
-  \ 'n'  : 'N',
-  \ 'i'  : 'I',
-  \ 'R'  : 'R',
-  \ 'c'  : 'C',
-  \ 'v'  : 'V',
-  \ 'V'  : 'V',
-  \ '' : 'V',
-  \ 's'  : 'S',
-  \ 'S'  : 'S',
-  \ '' : 'S',
-  \ }
-
-" control which sections get truncated and at what width. >
-"
-let g:airline#extensions#branch#enabled = 0
-"let g:airline#extensions#default#section_truncate_width = { 'a' : 10 }
-" or only load what you want
-"   let g:airline_extensions = ['branch', 'tabline']
-
-let g:airline#extensions#default#layout = [
-      \ [ 'a', 'b', 'c' ],
-      \ [ 'x', 'z', 'warning' ]
-      \ ]
-
-"
-" visual mode mappings
-"
-
-" surround selection with ",',),{
-vnoremap <leader>" v`>a"<esc>`<i"<esc>`>ll
-vnoremap <leader>' v`>a'<esc>`<i'<esc>`>ll
-vnoremap <leader>( v`>a)<esc>`<i(<esc>`>ll
-vnoremap <leader>) v`>a)<esc>`<i(<esc>`>ll
-vnoremap <leader>{ v`>a}<esc>`<i{<esc>`>ll
-vnoremap <leader>} v`>a}<esc>`<i{<esc>`>ll
 
 " highlight word under cursor
 nnoremap gh :exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))<cr>
 nnoremap gH :match<cr>
 
-" Windows managment
+nmap <leader>ew :e %%
+nmap <leader>es :sp %%
+nmap <leader>ev :vsp %%
+nmap <leader>et :tabe %%
+nmap <leader>erc :sp $MYVIMRC<CR>
+nmap <leader>src :source $MYVIMRC<CR>
+
+" }}} --- Mappings
+
+" Windows managment --- {{{
 
 nnoremap <silent> <A-Up> :wincmd k<CR>
 nnoremap <silent> <A-Down> :wincmd j<CR>
@@ -324,9 +343,10 @@ nnoremap <silent> J :wincmd J<CR>
 nnoremap <silent> H :wincmd H<CR>
 nnoremap <silent> L :wincmd L<CR>
 
-"
-" Tabs management
-"
+" }}} --- windows managment
+
+" Tabs management {{{
+
 nmap <silent> <A-S-]> gt
 nmap <silent> <A-S-[> gT
 nmap <silent> <A-1> 1gt
@@ -351,25 +371,11 @@ nmap <silent> 8 8gt
 nmap <silent> 9 9gt
 nmap <silent> 0 :tablast<CR>
 
-nmap ,s :find  %:t:r.cpp<CR>
-nmap ,S :sfind %:t:r.cpp<CR>
-nmap ,i :find  %:t:r.inl<CR>
-nmap ,I :sfind %:t:r.inl<CR>
-nmap ,h :find  %:t:r.h<CR>
-nmap ,H :sfind %:t:r.h<CR>
-
-
-nmap <leader>ew :e %%
-nmap <leader>es :sp %%
-nmap <leader>ev :vsp %%
-nmap <leader>et :tabe %%
-nmap <leader>erc :sp $MYVIMRC<CR>
-nmap <leader>src :source $MYVIMRC<CR>
+" }}} --- tabs management
 
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
-
-" ExploreWiki::init
+" ExploreWiki::init --- {{{
 let g:netrw_banner=0
 "let g:old_netre_hide=0
 "let g:old_netrw_list_hide=''
@@ -411,47 +417,20 @@ endf
 
 nnoremap <leader>ww :call ExploreWiki()<CR>
 
-" key bindings
-nnoremap <leader>m :up<CR>:make<CR>
-nnoremap <leader>M :up<CR>:Make<CR>
+" }}} --- explore wiki
 
-nnoremap <leader>gp a <C-R>"<ESC>
-nnoremap <leader>gP i <C-R>"<ESC>
 
 call togglebg#map("<F5>")
 map <F2> :set spell!<CR>
 
-"command! Highlihgt exe printf('match IncSearch /\<%s\>/', expand('<cword>'))
 
-" Abbreviations
-
-
-augroup filetype_tools
-    autocmd!
-    "autocmd FileType cpp :iabbrev <buffer> iff if ( ) {<cr><++><cr>}<C-o>%<C-o>F)<left>
-    "autocmd FileType cpp :compiler clang |setlocal makeprg=~/.bin/build\ $*\ %:p:r.cpp
-    "autocmd FileType sh :setlocal nu grepprg=grep\ -n\ -R\ --exclude=.tags\ '--exclude=*.sw[a-z]'
-    "autocmd FileType cpp :iabbrev '' ''<left>
-    "autocmd FileType cpp :iabbrev "" ""<left>
-    "autocmd FileType cpp :iabbrev /**/ /**/<left><left>
-    "autocmd FileType cpp :setlocal foldmethod=syntax foldlevel=20
-    "autocmd FileType cpp :call omni#cpp#complete#Init()
-augroup END
-
-"
-" File type addons
-"
-
-"
-" txt2tags
-"
-
+" File types --- {{{
 augroup filetype
-    au!
     au! BufRead,BufNewFile *.t2t set filetype=txt2tags
     au! BufRead,BufNewFile *.ll set filetype=llvm
     au! BufRead,BufNewFile *.td set filetype=tablegen
     au! BufRead,BufNewFile *Makefile* set filetype=make
 augroup END
+" }}} ----- file types
 
 " vim: fdm=marker

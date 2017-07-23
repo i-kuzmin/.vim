@@ -21,9 +21,15 @@ iabbrev ii include
 
 set tags+=$HOME/.tags/cpp
 
-" :CTAGS
-
-" OmniCppComplete
+" --- Switch between headers --- {{{
+nmap ,s :find  %:t:r.cpp<CR>
+nmap ,S :sfind %:t:r.cpp<CR>
+nmap ,i :find  %:t:r.inl<CR>
+nmap ,I :sfind %:t:r.inl<CR>
+nmap ,h :find  %:t:r.h<CR>
+nmap ,H :sfind %:t:r.h<CR>
+" }}} --- switch between headers
+" --- OmniCppComplete --- {{{
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
@@ -32,8 +38,9 @@ let OmniCpp_MayCompleteDot = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+call omni#cpp#complete#Init()
+" }}} --- omnicppcomplete
 
-"
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
@@ -44,19 +51,8 @@ augroup vim_cpp
 "    autocmd! BufWrite <buffer> :silent Make
 augroup END
 
-call omni#cpp#complete#Init()
 call SetupMinWindowSize()
 
 set imsearch=0 iminsert=0
-" key bindings
-"nnoremap <leader>m :wa<CR>:make all<CR>
-"nnoremap <leader>M :wa<CR>:Make all<CR>
 
-"" play with folding
-"setlocal foldmethod=expr
-"setlocal foldexpr=GetTBFold(v:lnum)
-"
-"function! GetTBFold(lnum)
-"    return '0'
-"endfunction
-" vim: ft=vim nu
+" vim: fdm=marker ft=vim nu
