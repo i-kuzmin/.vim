@@ -128,10 +128,15 @@ let g:tex_flavor = "latex"
 " }}} --- ctrlp
 
 " --- syntastic --- {{{
-  map <leader>s :SyntasticToggleMode<CR>
+  noremap <leader>st :SyntasticToggleMode<CR>
+  noremap <leader>sr :SyntasticReset<CR>
+  noremap <leader>sc :SyntasticCheck<CR>
+
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
+
+  let g:syntastic_enable_signs = 1
 
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_auto_loc_list = 1
@@ -152,9 +157,10 @@ let g:tex_flavor = "latex"
 
 " --- UltiSnips --- {{{
   " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<c-b>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  " let g:UltiSnipsExpandTrigger="<tab>"
+  " let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  let g:UltiSnipsListSnippets="<c-v>"
 
   " If you want :UltiSnipsEdit to split your window.
   let g:UltiSnipsEditSplit="vertical"
@@ -301,7 +307,7 @@ nmap <leader>ew :e %%
 nmap <leader>es :sp %%
 nmap <leader>ev :vsp %%
 nmap <leader>et :tabe %%
-nmap <leader>erc :sp $MYVIMRC<CR>
+nmap <leader>erc :vs $MYVIMRC<CR>
 nmap <leader>src :source $MYVIMRC<CR>
 
 " Stop entering Ex mode accidentally
