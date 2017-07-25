@@ -52,3 +52,6 @@
 [submodule "bundle/omnicppcomplete"]
 	path = bundle/omnicppcomplete
 	url = https://github.com/vim-scripts/OmniCppComplete.git
+[submodule "bundle/vim-vundle"]
+	path = bundle/vim-vundle
+	url = https://github.com/VundleVim/Vundle.vim.git
