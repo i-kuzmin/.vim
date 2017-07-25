@@ -1,6 +1,15 @@
 set nocompatible
+filetype off
+
+" Pathogen --- {{{
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+" }}} --- pathogen
+" Vundle --- {{{
+call vundle#begin('~/.vim/vundle')
+
+Plugin 'vim-syntastic/syntastic'
+" }}} --- vundle
 
 " execute .vimrc in working directory
 set exrc hlsearch nohidden
