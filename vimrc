@@ -2,13 +2,15 @@ set nocompatible
 filetype off
 
 " Pathogen --- {{{
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+  runtime bundle/vim-pathogen/autoload/pathogen.vim
+  execute pathogen#infect()
 " }}} --- pathogen
-" Vundle --- {{{
-call vundle#begin('~/.vim/vundle')
 
-Plugin 'vim-syntastic/syntastic'
+" Vundle --- {{{
+  call vundle#begin('~/.vim/vundle')
+
+  Plugin 'vim-syntastic/syntastic'
+  call vundle#end()
 " }}} --- vundle
 
 " execute .vimrc in working directory
@@ -126,19 +128,19 @@ let g:tex_flavor = "latex"
 " }}} --- ctrlp
 
 " --- syntastic --- {{{
-"  map <leader>s :SyntasticToggleMode<CR>
-"  set statusline+=%#warningmsg#
-"  set statusline+=%{SyntasticStatuslineFlag()}
-"  set statusline+=%*
-"
-"  let g:syntastic_always_populate_loc_list = 1
-"  let g:syntastic_auto_loc_list = 1
-"  let g:syntastic_check_on_open = 0
-"  let g:syntastic_check_on_wq = 0
-"  let g:syntastic_cpp_clang_check_post_args = "" "use compilation database
-"  let g:syntastic_cpp_checkers = ["clang_check"]
-"  let g:syntastic_enable_highlighting = 1
-"  let g:syntastic_mode_map = { "mode" : "passive" }
+  map <leader>s :SyntasticToggleMode<CR>
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 0
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_cpp_clang_check_post_args = "" "use compilation database
+  let g:syntastic_cpp_checkers = ["clang_check"]
+  let g:syntastic_enable_highlighting = 1
+  let g:syntastic_mode_map = { "mode" : "passive" }
 " }}} --- syntastic
 
 " --- tagbar {{{
@@ -149,13 +151,13 @@ let g:tex_flavor = "latex"
 "  }}} --- tagbar
 
 " --- UltiSnips --- {{{
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+  " If you want :UltiSnipsEdit to split your window.
+  let g:UltiSnipsEditSplit="vertical"
 
 " }}} --- ultisnips
 
@@ -444,4 +446,4 @@ augroup filetype
 augroup END
 " }}} ----- file types
 
-" vim: fdm=marker
+" vim: fdm=marker ts=2 sw=2
