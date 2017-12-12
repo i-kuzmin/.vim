@@ -10,6 +10,23 @@ filetype off
   call vundle#begin('~/.vim/vundle')
 
   Plugin 'vim-syntastic/syntastic'
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'altercation/vim-colors-solarized'
+  Plugin 'ctrlpvim/ctrlp.vim'
+  Plugin 'rust-lang/rust.vim'
+  Plugin 'majutsushi/tagbar'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'tpope/vim-dispatch'
+  Plugin 'tpope/vim-surround'
+  Plugin 'tpope/vim-abolish'
+  Plugin 'tpope/vim-commentary'
+  Plugin 'tpope/vim-rsi'
+  Plugin 'tpope/vim-unimpaired'
+  Plugin 'nelstrom/vim-visual-star-search'
+  Plugin 'mileszs/ack.vim'
+  Plugin 'Valloric/YouCompleteMe'
+  Plugin 'vim-scripts/OmniCppComplete'
+
   call vundle#end()
 " }}} --- vundle
 
@@ -32,10 +49,12 @@ endif
 if has('gui_running')
     set guioptions=ai
     set background=light
-    set guifont=DejaVu\ Sans\ Mono\ 8
+    set guifont=DejaVu\ Sans\ Mono\ 8\ for\ Powerline
 else
     set background=dark
     "let g:solarized_termtrans = 1
+    "let g:solarized_termcolors=256
+    "let g:solarized_degrade = 1
 endif
 
 " Plugin configuration
@@ -186,6 +205,8 @@ set laststatus=2
 set ruler
 set showcmd
 set wildmenu
+set wildmode=list:full
+set tm=0
 
 if !&scrolloff
   set scrolloff=1
@@ -313,7 +334,7 @@ nmap <leader>src :source $MYVIMRC<CR>
 " Stop entering Ex mode accidentally
 nnoremap Q <esc>
 
-inoremap jk <esc>
+"inoremap jk <esc>
 inoremap  <C-^>
 cnoremap  <C-^>
 
