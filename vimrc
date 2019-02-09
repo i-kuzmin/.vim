@@ -146,6 +146,7 @@ let g:tex_flavor = "latex"
 " }}} --- ctrlp
 
 " --- syntastic --- {{{
+if exists('g:loaded_syntastic_plugin')
   noremap <leader>st :SyntasticToggleMode<CR>
   noremap <leader>sr :SyntasticReset<CR>
   noremap <leader>sc :SyntasticCheck<CR>
@@ -164,6 +165,7 @@ let g:tex_flavor = "latex"
   let g:syntastic_cpp_checkers = ["clang_check"]
   let g:syntastic_enable_highlighting = 1
   let g:syntastic_mode_map = { "mode" : "passive" }
+endif
 " }}} --- syntastic
 
 " --- tagbar {{{
@@ -179,7 +181,6 @@ let g:tex_flavor = "latex"
   " let g:UltiSnipsJumpForwardTrigger="<c-b>"
   " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
   let g:UltiSnipsListSnippets="<c-v>"
-
   " If you want :UltiSnipsEdit to split your window.
   let g:UltiSnipsEditSplit="vertical"
 
