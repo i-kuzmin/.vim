@@ -7,27 +7,26 @@ filetype off
 " }}} --- pathogen
 
 " Vundle --- {{{
-  call vundle#begin('~/.vim/vundle')
+  "call vundle#begin('~/.vim/vundle')
 
-  Plugin 'vim-syntastic/syntastic'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'altercation/vim-colors-solarized'
-  Plugin 'ctrlpvim/ctrlp.vim'
-  Plugin 'rust-lang/rust.vim'
-  Plugin 'majutsushi/tagbar'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'tpope/vim-dispatch'
-  Plugin 'tpope/vim-surround'
-  Plugin 'tpope/vim-abolish'
-  Plugin 'tpope/vim-commentary'
-  Plugin 'tpope/vim-rsi'
-  Plugin 'tpope/vim-unimpaired'
-  Plugin 'nelstrom/vim-visual-star-search'
-  Plugin 'mileszs/ack.vim'
-  Plugin 'Valloric/YouCompleteMe'
-  Plugin 'vim-scripts/OmniCppComplete'
-
-  call vundle#end()
+  "Plugin 'vim-syntastic/syntastic'
+  "Plugin 'scrooloose/nerdtree'
+  "Plugin 'altercation/vim-colors-solarized'
+  "Plugin 'ctrlpvim/ctrlp.vim'
+  "Plugin 'rust-lang/rust.vim'
+  "Plugin 'majutsushi/tagbar'
+  "Plugin 'tpope/vim-fugitive'
+  "Plugin 'tpope/vim-dispatch'
+  "Plugin 'tpope/vim-surround'
+  "Plugin 'tpope/vim-abolish'
+  "Plugin 'tpope/vim-commentary'
+  "Plugin 'tpope/vim-rsi'
+  "Plugin 'tpope/vim-unimpaired'
+  "Plugin 'nelstrom/vim-visual-star-search'
+  "Plugin 'mileszs/ack.vim'
+  "Plugin 'vim-scripts/OmniCppComplete'
+  "Plugin 'Valloric/YouCompleteMe'
+  "call vundle#end()
 " }}} --- vundle
 
 " execute .vimrc in working directory
