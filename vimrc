@@ -206,7 +206,9 @@ set ruler
 set showcmd
 set wildmenu
 set wildmode=list:full
-set tm=0
+
+"Leader mappings doesn't work if next line uncomment:
+"set tm=0
 
 if !&scrolloff
   set scrolloff=1
