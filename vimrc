@@ -88,6 +88,7 @@ let g:tex_flavor = "latex"
   let g:airline_theme = "solarized"
     "let g:airline#extensions#tabline#enabled = 1
   let g:airline_powerline_fonts=1
+  let g:airline_detect_spell = 0
 
   " --- symbols --- {{{
     let g:airline_left_sep = ''
@@ -130,8 +131,9 @@ let g:tex_flavor = "latex"
   let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#tabline#tabs_label = 't'
   let g:airline#extensions#tabline#show_close_button = 0
+  let g:airline#extensions#keymap#enabled = 0
 
-  " display full hirarchy of a tag
+  " display full hierarchy of a tag
   let g:airline#extensions#tagbar#flags = 'f'
 
 " }}} --- airline
