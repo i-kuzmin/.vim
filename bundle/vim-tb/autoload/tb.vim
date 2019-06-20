@@ -4,7 +4,7 @@ if exists("b:loaded_tb")
 endif
 let b:loaded_tb = 1
 
-set shellpipe+=\ 
+"set shellpipe+=\ 
 
 " }}} --- init plugin
 
@@ -31,6 +31,7 @@ endfunction " }}} ---
       endif
     else
       setlocal makeprg=b\ -s\ RECURSIVE=NO
+      setlocal shellpipe=2>&1\|\ tee
       setlocal makeef=
       if (a:verbose == 1)
         echo 'Use tbmake'
