@@ -4,10 +4,17 @@ filetype off
 " Pathogen --- {{{
   runtime bundle/vim-pathogen/autoload/pathogen.vim
   execute pathogen#infect()
-" }}} --- pathogen
-
+" }}} --- pathogen ------------------------------------------------------------
 " Vundle --- {{{
-  "call vundle#begin('~/.vim/vundle')
+  call vundle#begin('~/.vim/vundle')
+	Plugin 'Shougo/deoplete.nvim'
+	if !has('nvim')
+		Plugin 'roxma/nvim-yarp'
+		Plugin 'roxma/vim-hug-neovim-rpc'
+	endif
+	Plugin 'Shougo/neosnippet.vim'
+	Plugin 'Shougo/neosnippet-snippets'
+  Plugin 'neoclide/coc.nvim'
 
   "Plugin 'vim-syntastic/syntastic'
   "Plugin 'scrooloose/nerdtree'
@@ -26,8 +33,26 @@ filetype off
   "Plugin 'mileszs/ack.vim'
   "Plugin 'vim-scripts/OmniCppComplete'
   "Plugin 'Valloric/YouCompleteMe'
-  "call vundle#end()
-" }}} --- vundle
+  call vundle#end()
+" }}} --- vundle ---------------------------------------------------------------
+" LSC --- {{{
+  let g:lsc_server_commands = {'cpp': '/home/igk/tools/tbnode-docker/bin/clangd-all'}
+  "let g:lsc_trace_level = 'verbose'
+  "let g:lsc_server_commands = {'cpp': '127.0.0.1:777'}
+  let g:lsc_auto_map = v:true
+  let g:lsc_server_enabled = v:false
+" }}} --- lsc ------------------------------------------------------------------
+" Neosnippet --- {{{
+  "
+  let g:neosnippet#snippets_directory="~/.vim/snippets"
+
+  " Plugin key-mappings.
+  " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
+" }}} --- neosnippet
+
 
 " execute .vimrc in working directory
 set exrc hlsearch nohidden
@@ -197,6 +222,7 @@ colorscheme solarized
 " from sensible vim
 set backspace=indent,eol,start
 set complete-=i
+set completeopt=longest,menuone,noinsert
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
@@ -327,6 +353,7 @@ nnoremap <silent> <F7> :set list!<CR>
 " highlight word under cursor
 nnoremap gh :exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))<cr>
 nnoremap gH :match<cr>
+
 
 nmap <leader>ew :e %%
 nmap <leader>es :sp %%

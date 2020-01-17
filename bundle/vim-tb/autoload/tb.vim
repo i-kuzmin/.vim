@@ -24,15 +24,17 @@ endfunction " }}} ---
   function s:set_makeprg(id, verbose)
     if a:id == 0
       setlocal makeef=.quickfix
+      setlocal grepprg=grep-wrapper
       setlocal makeprg=clang-check-wrapper\ %
       setlocal shellpipe=
       if (a:verbose)
         echo 'Use clang-check'
       endif
     else
+      setlocal makeef=
+      setlocal grepprg=grep\ %\ -n
       setlocal makeprg=b\ -s\ RECURSIVE=NO
       setlocal shellpipe=2>&1\|\ tee
-      setlocal makeef=
       if (a:verbose == 1)
         echo 'Use tbmake'
       endif
