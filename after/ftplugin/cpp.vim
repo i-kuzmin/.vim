@@ -4,7 +4,8 @@ compiler clang "|setlocal makeprg=vim_cpp_build\ all
 "compiler clang|setlocal makeprg=~/.bash/vim-tools\ cpp_build\ $*\ %:p:r.cpp
 "compiler clang|setlocal makeprg=tbmake\ RECURSIVE=NO
 "setlocal foldmethod=syntax foldlevel=20
-setlocal nu rnu grepprg=grep\ -n\ -R\ --exclude=.tags\ '--exclude=*.sw[a-z]'
+setlocal nu rnu
+"grepprg=grep\ -n\ -R\ --exclude=.tags\ '--exclude=*.sw[a-z]'
 set colorcolumn=86
 "set grepprg=ack\ -k\ --cpp
 
@@ -15,8 +16,8 @@ let g:ack_default_options = "-s -H --nocolor --nogroup --column --cpp"
 map <leader>f :pyf ~/src/clang-llvm/llvm/tools/clang/tools/clang-format/clang-format.py<cr>
 imap <leader>f <c-o>:pyf ~/src/clang-llvm/llvm/tools/clang/tools/clang-format/clang-format.py<cr>
 
-iabbrev <buffer> iff if ( ) {<cr><++><cr>}<C-o>%<C-o>F)<left>
-iabbrev <buffer> ife if ( ) {<cr><++><cr>} else {<cr><++><cr>}<C-o>%<C-o>F}<C-o>%<C-o>F)<left>
+"iabbrev <buffer> iff if ( ) {<cr><++><cr>}<C-o>%<C-o>F)<left>
+"iabbrev <buffer> ife if ( ) {<cr><++><cr>} else {<cr><++><cr>}<C-o>%<C-o>F}<C-o>%<C-o>F)<left>
 iabbrev ii include
 
 set tags+=$HOME/.tags/cpp
@@ -43,7 +44,7 @@ call omni#cpp#complete#Init()
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
+"set completeopt=menuone,menu,longest,preview
 
 " Auto-commands
 augroup vim_cpp

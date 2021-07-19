@@ -4,25 +4,17 @@ filetype off
 " Pathogen --- {{{
   runtime bundle/vim-pathogen/autoload/pathogen.vim
   execute pathogen#infect()
-" }}} --- pathogen
-
+" }}} --- pathogen ------------------------------------------------------------
 " Vundle --- {{{
   call vundle#begin('~/.vim/vundle')
+	if !has('nvim')
+		Plugin 'roxma/nvim-yarp'
+		Plugin 'roxma/vim-hug-neovim-rpc'
+	endif
   Plugin 'Shougo/deoplete.nvim'
-  if !has('nvim')
-    Plugin 'roxma/nvim-yarp'
-    Plugin 'roxma/vim-hug-neovim-rpc'
-  endif
   Plugin 'Shougo/neosnippet.vim'
   Plugin 'Shougo/neosnippet-snippets'
-  "Plugin 'Valloric/YouCompleteMe'
-  Plugin 'lervag/vimtex'
-
-  " Let clangd fully control code completion
-  ""let g:ycm_clangd_uses_ycmd_caching = 0
-  ""let g:loaded_youcompleteme = 1 
-  """ Use installed clangd, not YCM-bundled clangd which doesn't get updates.
-  ""let g:ycm_clangd_binary_path = exepath("clangd")
+  Plugin 'neoclide/coc.nvim'
 
   "Plugin 'vim-syntastic/syntastic'
   "Plugin 'scrooloose/nerdtree'
@@ -42,6 +34,25 @@ filetype off
   "Plugin 'vim-scripts/OmniCppComplete'
   call vundle#end()
 " }}} --- vundle
+" }}} --- vundle ---------------------------------------------------------------
+" LSC --- {{{
+  let g:lsc_server_commands = {'cpp': '/home/igk/tools/tbnode-docker/bin/clangd-all'}
+  "let g:lsc_trace_level = 'verbose'
+  "let g:lsc_server_commands = {'cpp': '127.0.0.1:777'}
+  let g:lsc_auto_map = v:true
+  let g:lsc_server_enabled = v:false
+" }}} --- lsc ------------------------------------------------------------------
+" Neosnippet --- {{{
+  "
+  let g:neosnippet#snippets_directory="~/.vim/snippets"
+
+  " Plugin key-mappings.
+  " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
+" }}} --- neosnippet
+
 
 " execute .vimrc in working directory
 set exrc hlsearch nohidden
@@ -108,6 +119,7 @@ let g:tex_flavor = "latex"
   let g:airline_theme = "solarized"
     "let g:airline#extensions#tabline#enabled = 1
   let g:airline_powerline_fonts=1
+  let g:airline_detect_spell = 0
 
   " --- symbols --- {{{
     let g:airline_left_sep = ''
@@ -150,8 +162,9 @@ let g:tex_flavor = "latex"
   let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#tabline#tabs_label = 't'
   let g:airline#extensions#tabline#show_close_button = 0
+  let g:airline#extensions#keymap#enabled = 0
 
-  " display full hirarchy of a tag
+  " display full hierarchy of a tag
   let g:airline#extensions#tagbar#flags = 'f'
 
 " }}} --- airline
@@ -234,6 +247,8 @@ colorscheme solarized
 
 " from sensible vim
 set backspace=indent,eol,start
+set complete-=i
+set completeopt=longest,menuone,noinsert
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
@@ -365,6 +380,7 @@ nnoremap <silent> <F7> :set list!<CR>
 " highlight word under cursor
 nnoremap gh :exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))<cr>
 nnoremap gH :match<cr>
+
 
 nmap <leader>ew :e %%
 nmap <leader>es :sp %%

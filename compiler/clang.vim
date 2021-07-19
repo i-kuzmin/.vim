@@ -23,13 +23,24 @@
   "    \%f:%l:%c:\ %tarning:\ %m,
   "    \%-G%.%#
 
+  "CompilerSet errorformat=
+  "    \%-G---%.%#,
+  "    \%-G#%.%#,
+  "    \%E\%f:%l:%c:\ %trror:\ %m,
+  "    \%I\%f:%l:%c:\ note:\ %m,
+  "    \%W\%f:%l:%c:\ %tarning:\ %m,
+  "    \%C%.%#,
+  "    \%Z%%s^
+
   CompilerSet errorformat=
+      \%-G[ccache]%.%#,
       \%-G---%.%#,
       \%-G#%.%#,
-      \%E\%f:%l:%c:\ %trror:\ %m,
-      \%W\%f:%l:%c:\ %tarning:\ %m,
-      \%C%.%#,
-      \%Z%%s^
+      \%E%f:%l:%c:\ error:\ %m,
+      \%W%f:%l:%c:\ warning:\ %m,
+"      \%C%.%#
+"      \%I\%f:%l:%c:\ note:\ %m,
+
 
   "setlocal errorformat  =%f:%l:%c:\ %trror:\ %m
   "setlocal errorformat +=%f:%l:%c:\ %tarning:\ %m
