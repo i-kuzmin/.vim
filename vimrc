@@ -7,7 +7,22 @@ filetype off
 " }}} --- pathogen
 
 " Vundle --- {{{
-  "call vundle#begin('~/.vim/vundle')
+  call vundle#begin('~/.vim/vundle')
+  Plugin 'Shougo/deoplete.nvim'
+  if !has('nvim')
+    Plugin 'roxma/nvim-yarp'
+    Plugin 'roxma/vim-hug-neovim-rpc'
+  endif
+  Plugin 'Shougo/neosnippet.vim'
+  Plugin 'Shougo/neosnippet-snippets'
+  "Plugin 'Valloric/YouCompleteMe'
+  Plugin 'lervag/vimtex'
+
+  " Let clangd fully control code completion
+  ""let g:ycm_clangd_uses_ycmd_caching = 0
+  ""let g:loaded_youcompleteme = 1 
+  """ Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+  ""let g:ycm_clangd_binary_path = exepath("clangd")
 
   "Plugin 'vim-syntastic/syntastic'
   "Plugin 'scrooloose/nerdtree'
@@ -25,8 +40,7 @@ filetype off
   "Plugin 'nelstrom/vim-visual-star-search'
   "Plugin 'mileszs/ack.vim'
   "Plugin 'vim-scripts/OmniCppComplete'
-  "Plugin 'Valloric/YouCompleteMe'
-  "call vundle#end()
+  call vundle#end()
 " }}} --- vundle
 
 " execute .vimrc in working directory
@@ -41,7 +55,7 @@ set fileencodings=ucs-bom,utf-8,default,cp1251,cp866,latin1
 set ttyfast
 
 " use blowfish2 for encrypt files
-if version >= 744
+if (version >= 744) && ! has('nvim')
     set cryptmethod=blowfish2
 endif
 
@@ -60,6 +74,12 @@ endif
 
 " latex-suit
 let g:tex_flavor = "latex"
+
+" --- netrw --- {{{
+  " disable plugin
+  "let loaded_netrwPlugin = 1
+
+" }}} ---
 
 " --- Solarized color scheme --- {{{
   let g:solarized_hitrail=1
@@ -175,6 +195,26 @@ endif
 
 "  }}} --- tagbar
 
+" --- ycm {{{
+ let g:ycm_auto_hover=""
+ nnoremap <silent> <leader>jd :YcmCompleter GoToImprecise<CR>
+ nnoremap <silent> <leader>ji :YcmCompleter GoToInclude<CR>
+ nnoremap <silent> <leader>jr :YcmCompleter GoToReferences<CR>
+ nnoremap <silent> <leader>js :YcmCompleter GoToSymbol 
+ nnoremap <silent> <leader>yt :YcmCompleter GetTypeImprecise<CR> 
+ nnoremap <silent> <leader>yd :YcmCompleter GetDocImprecise<CR> 
+" GoTo
+" GoToDeclaration
+" GoToDefinition
+" GoToImprecise
+" GoToInclude
+" GoToReferences
+" GoToSymbol
+let g:enable_ycm_at_startup = 0
+let g:ycm_show_diagnostics_ui = 0
+
+"  }}} --- ycm
+
 " --- UltiSnips --- {{{
   " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
   " let g:UltiSnipsExpandTrigger="<tab>"
@@ -194,7 +234,6 @@ colorscheme solarized
 
 " from sensible vim
 set backspace=indent,eol,start
-set complete-=i
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
@@ -204,8 +243,9 @@ endif
 set laststatus=2
 set ruler
 set showcmd
+"set complete-=i
 set wildmenu
-set wildmode=list:full
+set wildmode=list:longest "list all match, complete till longest common string.
 
 "Leader mappings doesn't work if next line uncomment:
 "set tm=0
@@ -228,7 +268,7 @@ set iminsert=0
 set imsearch=0
 
 "spell
-set spell spelllang=en_us,ru_yo
+set spell spelllang=en_us,pt_pt,ru_yo
 
 set tags+=.tags
 filetype plugin on
@@ -339,6 +379,7 @@ nnoremap Q <esc>
 "inoremap jk <esc>
 inoremap  <C-^>
 cnoremap  <C-^>
+nnoremap  a<C-^><esc>
 
 "inoremap <C-c> <esc>
 
